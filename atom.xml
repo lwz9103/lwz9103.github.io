@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>lwz9103 的砖厂</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2019-08-20T17:45:02.142Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>lwz9103</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>开篇语</title>
+    <link href="http://yoursite.com/2019/08/21/first-post/"/>
+    <id>http://yoursite.com/2019/08/21/first-post/</id>
+    <published>2019-08-20T17:34:10.000Z</published>
+    <updated>2019-08-20T17:45:02.142Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="为什么搬砖？"><a href="#为什么搬砖？" class="headerlink" title="为什么搬砖？"></a>为什么搬砖？</h3><h4 id="建立个人知识库"><a href="#建立个人知识库" class="headerlink" title="建立个人知识库"></a>建立个人知识库</h4><p>&ensp;&ensp;&ensp;&ensp;之前有用有道云，onenote 做知识记录的习惯，但随着记录经验的增加，发现自己对知识记录有了更进一步的需求。之前只是需要<strong>知识的存储检索同步</strong>，现在还需要<strong>简洁的记录方式</strong>，<strong>优雅的外观</strong>，同时不失<strong>强大的功能</strong>。</p><p>&ensp;&ensp;&ensp;&ensp;由于经常使用 github，所以在页面编辑方式上首选 <strong>markdown</strong>，外观显示上采用 <strong>github pages + hexo + next</strong>。由于 hexo 和 next 有众多开发者贡献插件，各类功能也能得到很好的保障。</p><a id="more"></a><h4 id="加深对知识的理解"><a href="#加深对知识的理解" class="headerlink" title="加深对知识的理解"></a>加深对知识的理解</h4><p>&ensp;&ensp;&ensp;&ensp;之前经常看一些技术文章，看的过程中觉得理解了。碰到问题的时候，经常会有种感觉，仿佛哪里见过，但就是说不清楚是哪了，怎么解决的。去各类知识平台搜索自己的浏览记录，却发现已经找不到任何痕迹了。这类知识，早被大脑<strong>垃圾回收了</strong>，也没有持久化，这就基本相当于浪费了阅读这段知识所花的时间。要想让这些知识能重回到大脑里，就得有引用指向这些知识。这个引用的产生可以是从外部知识存储中加载到大脑中，但这<strong>存在一定的时限</strong>，所以有可能需要<strong>定时的加载</strong>。另外，日常生活&amp;工作正常进行所需的知识会自然而然的保存到大脑的 context 中，这块知识由于经常被引用，所以能避免被大脑当成垃圾回收掉。</p><p>&ensp;&ensp;&ensp;&ensp;由于大脑存储容量及性能有限，装载的太满容易卡机（垃圾回收频繁，大脑得释放一些内存）。所以对于一些占用空间大，使用频率低的知识可以做外部知识链接，比如各类不常用系统的搭建流程（jenkins，sonar etc.）。外部知识链接即知识存储在外部系统（笔记本），但是脑子里存了一份知识关键字到外部存储位置的链接关系。这里知识的关键字存在不同的详细程度，比如 jenkins 相关的知识、jenkins 搭建相关的流程、jenkins 搭建中构建节点的配置，其详细程度是依次递增的。对一个知识认识的详细程度越高，搜索起来效率也越高（搜索关键字准确），trade off 是需要更多的时间和空间来加载这些知识链接。</p><h3 id="搬砖准则"><a href="#搬砖准则" class="headerlink" title="搬砖准则"></a>搬砖准则</h3><h4 id="由浅入深"><a href="#由浅入深" class="headerlink" title="由浅入深"></a>由浅入深</h4><p>&ensp;&ensp;&ensp;&ensp;知识的加载并不是一件轻松的事情。我把对知识的理解归为三个层次。第一层次，能够正确使用知识暴露的最外层接口。第二层次，理解知识内在的工作逻辑，在出现异常状况时，能够快速找到 Root Cause。第三层级，深刻理解知识运用的场景，明白其潜在的缺陷，并且能有自己的见解去改善它。</p><p>&ensp;&ensp;&ensp;&ensp;大部分时候，我们只需要掌握第一层次，就能基本应付工作和生活了。所以在去深入了解一门知识前，都先考虑考虑是否值得花这些时间。</p><h4 id="从源头处搬"><a href="#从源头处搬" class="headerlink" title="从源头处搬"></a>从源头处搬</h4><p>&ensp;&ensp;&ensp;&ensp;从知识的源头处搬，这样可以避免多次转手带来的偏差。参考的优先级为 <code>官网/国际期刊论文书籍 --&gt; 卓有成就的专家博客 --&gt; 较专业的知识分享网站 --&gt; google 搜索 --&gt; bing --&gt; 某度</code></p><h4 id="经过验证"><a href="#经过验证" class="headerlink" title="经过验证"></a>经过验证</h4><p>&ensp;&ensp;&ensp;&ensp;摘录前需要验证知识的准确性。有些知识可能会因为来源问题，时间问题（版本）导致不可被验证。这类需要被剔除，因为它已经没用了。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;为什么搬砖？&quot;&gt;&lt;a href=&quot;#为什么搬砖？&quot; class=&quot;headerlink&quot; title=&quot;为什么搬砖？&quot;&gt;&lt;/a&gt;为什么搬砖？&lt;/h3&gt;&lt;h4 id=&quot;建立个人知识库&quot;&gt;&lt;a href=&quot;#建立个人知识库&quot; class=&quot;headerlink&quot; title=&quot;建立个人知识库&quot;&gt;&lt;/a&gt;建立个人知识库&lt;/h4&gt;&lt;p&gt;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;之前有用有道云，onenote 做知识记录的习惯，但随着记录经验的增加，发现自己对知识记录有了更进一步的需求。之前只是需要&lt;strong&gt;知识的存储检索同步&lt;/strong&gt;，现在还需要&lt;strong&gt;简洁的记录方式&lt;/strong&gt;，&lt;strong&gt;优雅的外观&lt;/strong&gt;，同时不失&lt;strong&gt;强大的功能&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;由于经常使用 github，所以在页面编辑方式上首选 &lt;strong&gt;markdown&lt;/strong&gt;，外观显示上采用 &lt;strong&gt;github pages + hexo + next&lt;/strong&gt;。由于 hexo 和 next 有众多开发者贡献插件，各类功能也能得到很好的保障。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="杂谈" scheme="http://yoursite.com/categories/%E6%9D%82%E8%B0%88/"/>
+    
+    
+      <category term="扯淡" scheme="http://yoursite.com/tags/%E6%89%AF%E6%B7%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://yoursite.com/2019/08/19/hello-world/"/>
+    <id>http://yoursite.com/2019/08/19/hello-world/</id>
+    <published>2019-08-19T14:44:46.000Z</published>
+    <updated>2019-08-20T17:44:50.517Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><a id="more"></a><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#Create-a-new-post&quot; class=&quot;headerlink&quot; title=&quot;Create a new post&quot;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo new &lt;span class=&quot;string&quot;&gt;&quot;My New Post&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/writing.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Writing&lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
