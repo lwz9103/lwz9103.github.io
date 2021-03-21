@@ -3,7 +3,10 @@
   <entry>
     <title><![CDATA[mlsql-task-3]]></title>
     <url>%2F2021%2F03%2F21%2Fmlsql-task-3%2F</url>
-    <content type="text"><![CDATA[]]></content>
+    <content type="text"><![CDATA[设置 MLSQL 环境依赖 检查本机 Python 版本 安装依赖 12345pip install Cythonpip install pyarrow==0.10.0pip install ray==0.8.0pip install aiohttp psutil setproctitle grpcio pandas xlsxwriterpip install watchdog requests click uuid sfcli pyjava 本机启动 ray 验证代码执行]]></content>
+      <tags>
+        <tag>MLSQL Learning</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[开篇语]]></title>
