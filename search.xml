@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[mlsql-task-2]]></title>
+    <url>%2F2021%2F03%2F22%2Fmlsql-task-2%2F</url>
+    <content type="text"><![CDATA[任务2：学习 MLSQL 基本语言 连接console依赖的数据库中的任意一个表，将数据写到delta lake中，并且查询100条展示出来。 12345678910111213load jdbc.`mlsql_job` where url="jdbc:mysql://localhost:3306/mlsql_console?characterEncoding=utf8&amp;zeroDateTimeBehavior=convertToNull&amp;tinyInt1isBit=false"and driver="com.mysql.jdbc.Driver"and user="root"and password="******"as table1;select * from table1 limit 100 as table2;save append table2 as delta.`dt1`;load delta.`dt1` as table3;select * from table3 as table4; 通过MLSQL mock一些Json格式数据，然后批量写入数据到Kafka中 123456789101112set jsonData='''&#123; "id": 1, "name": "a", "age": 20 ,"gender":"f"&#125;&#123; "id": 2, "name": "b", "age": 25 ,"gender":"m"&#125;&#123; "id": 3, "name": "c", "age": 30 ,"gender":"f"&#125;&#123; "id": 4, "name": "d", "age": 35 ,"gender":"m"&#125;&#123; "id": 5, "name": "e", "age": 19 ,"gender":"f"&#125;''';load jsonStr.`jsonData` as table1;select to_json(struct(*)) as value from table1 as table2;save append table2 as kafka.`aaa` where kafka.bootstrap.servers="127.0.0.1:9092"; (可选题） 写一个流程序参考MLSQL流编程,消费前面写入到Kafka的数据 将数据写入到 delta 中，方便后续消费 12345678910111213141516171819202122-- the stream name, should be uniq.set streamName="kafkaExample";!kafkaTool registerSchema 2 records from "127.0.0.1:9092" aaa;-- convert table as stream sourceload kafka.`aaa` options kafka.bootstrap.servers="127.0.0.1:9092"and failOnDataLoss="false"as newkafkatable1;-- aggregation select * from newkafkatable1as table21;-- output the the result to console.save append table21 as rate.`/tmp/delta/aaa-0` options mode="Append"and idCols="id"and duration="5"and checkpointLocation="/tmp/s-cpl6"; 查看 delta 中的数据 12load delta.`/tmp/delta/aaa-0` as show_table1;select * from show_table1 as output; 在MLSQL中使用Scala完成一个UDF的演示使用例子 利用上方 delta 的数据，写一个分析年龄范围的函数 12345678910111213141516171819202122232425load delta.`/tmp/delta/aaa-0` as show_table1;select * from show_table1 as table2;-- regist udfregister ScriptUDF.`` as ageRangeFun whereand lang="scala"and udfType="udf"and code='''def apply(a:Long)=&#123; var ageRange: String = "" if (a &lt; 20) &#123; ageRange = "1-19" &#125; if (a &gt;= 20 &amp;&amp; a &lt; 30) &#123; ageRange = "20-29" &#125; if (a &gt;= 30) &#123; ageRange = "&gt;=30" &#125; ageRange&#125;''';select *, ageRangeFun(age) from table2 as table3; 离线安装一个excel插件 参考离线安装插件,并上传任意excel文件，然后读取显示出来。 设置好环境后，上传单列 excel 文件，写入代码 123456789101112131415161718192021load binaryFile.`/tmp/upload/report.xlsx` as excel_table;--!python env "PYTHON_ENV=source activate dev";!python conf "schema=st(field(Index,long))";!python conf "runIn=driver";!python conf "dataMode=model";!ray on excel_table '''import ioimport rayfrom pyjava.api.mlsql import RayContextimport pandas as pdray_context = RayContext.connect(globals(),None)excel_file_binary_list = [item for item in RayContext.collect_from(ray_context.data_servers())]df = pd.read_excel(io.BytesIO(excel_file_binary_list[0]["content"]))context.build_result([row for row in df.to_dict('records')])''' named excel_data;]]></content>
+      <categories>
+        <category>MLSQL</category>
+        <category>MLSQL 入门学习任务</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[mlsql-task-3]]></title>
     <url>%2F2021%2F03%2F21%2Fmlsql-task-3%2F</url>
     <content type="text"><![CDATA[设置 MLSQL 环境依赖 检查本机 Python 版本 安装依赖 12345pip install Cythonpip install pyarrow==0.10.0pip install ray==0.8.0pip install aiohttp psutil setproctitle grpcio pandas xlsxwriterpip install watchdog requests click uuid sfcli pyjava 本机启动 ray 验证代码执行]]></content>
-      <tags>
-        <tag>MLSQL Learning</tag>
-      </tags>
+      <categories>
+        <category>MLSQL</category>
+        <category>MLSQL 入门学习任务</category>
+      </categories>
   </entry>
   <entry>
     <title><![CDATA[开篇语]]></title>
