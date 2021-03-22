@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[mlsql-task-7]]></title>
+    <url>%2F2021%2F03%2F22%2Fmlsql-task-7%2F</url>
+    <content type="text"><![CDATA[任务(7)： 从Python库提取示例数据到Delta Lake中 安装 vega_datasets 1pip install vega_datasets 编写 mlsql, 从 python 库里面获取数据 12345678910111213141516!python conf "schema=st(field(petalLength,double),field(petalWidth,double),field(sepalLength,double),field(sepalWidth,double),field(species,string))";!python conf "dataMode=model";!ray on command '''import plotly.express as pxfrom plotly.io import to_htmlfrom vega_datasets import datadf = data.iris()context.set_output([[df[name] for name in df]])''' named mlsql_temp_table2;select * from mlsql_temp_table2 as output; 理解题 为什么dataMode 设置为 model而不是data。 参考dataMode 详解。 data 是指用 ray 进行分布式计算，数据结果分散在 ray 的各个节点上，mlsql engine 需要根据各个节点信息，去获取结果 123456789101112131415if (dataMode == "data") &#123; val rows = outputDF.collect() val rdd = session.sparkContext.makeRDD[Row](rows, numSlices = rows.length) val stage2_schema_encoder = WowRowEncoder.fromRow(stage2_schema) val newRDD = if (rdd.partitions.length &gt; 0 &amp;&amp; rows.length &gt; 0) &#123; rdd.flatMap &#123; row =&gt; val socketRunner = new SparkSocketRunner("readFromStreamWithArrow", NetUtils.getHost, timezoneID) val commonTaskContext = new SparkContextImp(TaskContext.get(), null) val pythonWorkerHost = row.getAs[String]("host") val pythonWorkerPort = row.getAs[Long]("port").toInt logInfo(s" Ray On Data Mode: connect python worker[$&#123;pythonWorkerHost&#125;:$&#123;pythonWorkerPort&#125;] ") val iter = socketRunner.readFromStreamWithArrow(pythonWorkerHost, pythonWorkerPort, commonTaskContext) iter.map(f =&gt; f.copy()) &#125; &#125; else rdd.map(f =&gt; stage2_schema_encoder(f)) 而 model 则是直接通过 ray client 获取结果 为什么需要设置schema 因为结果是从 python 读回到 mlsql engine 的，mlsql engine 本身一开始并不知道 python 回来的数据会长什么样，所以需要设置 PYTHON_ENV 根据自己需求设置 由于没有安装 conda，所以直接用本机的 python 环境 context.set_output 为什么接受的格式比较特殊？ 大家可以学习下pyarrow. 这块没太搞懂。。]]></content>
+      <categories>
+        <category>MLSQL</category>
+        <category>MLSQL 入门学习任务</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[mlsql-task-6]]></title>
     <url>%2F2021%2F03%2F22%2Fmlsql-task-6%2F</url>
     <content type="text"><![CDATA[任务(6)： 高阶机器学习-从训练到预测 注册模型 1234567891011121314151617181920212223242526272829303132333435363738--NaiveBayesset jsonStr='''&#123;"features":[5.1,3.5,1.4,0.2],"label":0.0&#125;,&#123;"features":[5.1,3.5,1.4,0.2],"label":1.0&#125;&#123;"features":[5.1,3.5,1.4,0.2],"label":0.0&#125;&#123;"features":[4.4,2.9,1.4,0.2],"label":0.0&#125;&#123;"features":[5.1,3.5,1.4,0.2],"label":1.0&#125;&#123;"features":[5.1,3.5,1.4,0.2],"label":0.0&#125;&#123;"features":[5.1,3.5,1.4,0.2],"label":0.0&#125;&#123;"features":[4.7,3.2,1.3,0.2],"label":1.0&#125;&#123;"features":[5.1,3.5,1.4,0.2],"label":0.0&#125;&#123;"features":[5.1,3.5,1.4,0.2],"label":0.0&#125;''';load jsonStr.`jsonStr` as data;select vec_dense(features) as features ,label as label from dataas data1;-- use RandomForesttrain data1 as RandomForest.`/tmp/model` where-- once set true,every time you run this script, MLSQL will generate new directory for you modelkeepVersion="true" -- specicy the test dataset which will be used to feed evaluator to generate some metrics e.g. F1, Accurateand evaluateTable="data1"-- specify group 0 parametersand `fitParam.0.labelCol`="features"and `fitParam.0.featuresCol`="label"and `fitParam.0.maxDepth`="2"-- specify group 1 parametersand `fitParam.1.featuresCol`="features"and `fitParam.1.labelCol`="label"and `fitParam.1.maxDepth`="10";register RandomForest.`/tmp/model` as rf_predict; 批量预测 API 预测]]></content>
@@ -8,11 +17,6 @@
         <category>MLSQL</category>
         <category>MLSQL 入门学习任务</category>
       </categories>
-  </entry>
-  <entry>
-    <title><![CDATA[mlsql-sql-6]]></title>
-    <url>%2F2021%2F03%2F22%2Fmlsql-sql-6%2F</url>
-    <content type="text"></content>
   </entry>
   <entry>
     <title><![CDATA[mlsql-task-5]]></title>
