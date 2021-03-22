@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[mlsql-task-6]]></title>
+    <url>%2F2021%2F03%2F22%2Fmlsql-task-6%2F</url>
+    <content type="text"><![CDATA[任务(6)： 高阶机器学习-从训练到预测 注册模型 1234567891011121314151617181920212223242526272829303132333435363738--NaiveBayesset jsonStr='''&#123;"features":[5.1,3.5,1.4,0.2],"label":0.0&#125;,&#123;"features":[5.1,3.5,1.4,0.2],"label":1.0&#125;&#123;"features":[5.1,3.5,1.4,0.2],"label":0.0&#125;&#123;"features":[4.4,2.9,1.4,0.2],"label":0.0&#125;&#123;"features":[5.1,3.5,1.4,0.2],"label":1.0&#125;&#123;"features":[5.1,3.5,1.4,0.2],"label":0.0&#125;&#123;"features":[5.1,3.5,1.4,0.2],"label":0.0&#125;&#123;"features":[4.7,3.2,1.3,0.2],"label":1.0&#125;&#123;"features":[5.1,3.5,1.4,0.2],"label":0.0&#125;&#123;"features":[5.1,3.5,1.4,0.2],"label":0.0&#125;''';load jsonStr.`jsonStr` as data;select vec_dense(features) as features ,label as label from dataas data1;-- use RandomForesttrain data1 as RandomForest.`/tmp/model` where-- once set true,every time you run this script, MLSQL will generate new directory for you modelkeepVersion="true" -- specicy the test dataset which will be used to feed evaluator to generate some metrics e.g. F1, Accurateand evaluateTable="data1"-- specify group 0 parametersand `fitParam.0.labelCol`="features"and `fitParam.0.featuresCol`="label"and `fitParam.0.maxDepth`="2"-- specify group 1 parametersand `fitParam.1.featuresCol`="features"and `fitParam.1.labelCol`="label"and `fitParam.1.maxDepth`="10";register RandomForest.`/tmp/model` as rf_predict; 批量预测 API 预测]]></content>
+      <categories>
+        <category>MLSQL</category>
+        <category>MLSQL 入门学习任务</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[mlsql-sql-6]]></title>
+    <url>%2F2021%2F03%2F22%2Fmlsql-sql-6%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[mlsql-task-5]]></title>
     <url>%2F2021%2F03%2F22%2Fmlsql-task-5%2F</url>
     <content type="text"><![CDATA[学习和开发 ET 插件 在 /mlsql/external/mlsql-ets/src/main/java/tech/mlsql/plugins/ets 目录下新增 ET 插件类 KylinSource 编写 KylinSource 123456789101112131415161718192021222324252627package tech.mlsql.plugins.etsimport org.apache.spark.ml.util.Identifiableimport org.apache.spark.sql.&#123;DataFrame, SparkSession&#125;import org.apache.spark.sql.expressions.UserDefinedFunctionimport streaming.dsl.mmlib.SQLAlgimport streaming.dsl.mmlib.algs.param.WowParamsclass KylinSource(override val uid: String) extends SQLAlg with WowParams &#123; def this() = this(Identifiable.randomUID("tech.mlsql.plugins.ets.KylinSource")) override def train(df: DataFrame, path: String, params: Map[String, String]): DataFrame = &#123; df.sparkSession.read .format("jdbc") .option("url", s"jdbc:kylin://$&#123;params("host")&#125;:$&#123;params("port")&#125;/$&#123;params("project")&#125;") .option("driver", "org.apache.kylin.jdbc.Driver") .option("user", params("user")) .option("password", params("password")) .option("query", params("query")).load() &#125; override def batchPredict(df: DataFrame, path: String, params: Map[String, String]): DataFrame = train(df, path, params) override def load(sparkSession: SparkSession, path: String, params: Map[String, String]): Any = ??? override def predict(sparkSession: SparkSession, _model: Any, name: String, params: Map[String, String]): UserDefinedFunction = ???&#125; 修改 tech.mlsql.plugins.ets.ETApp 注册内置插件，新增一行 1ETRegister.register("Kylin", classOf[KylinSource].getName) 在 streamingpro-mlsql/pom.xml 中新增 kylin jdbc driver 依赖 123456&lt;dependency&gt; &lt;groupId&gt;org.apache.kylin&lt;/groupId&gt; &lt;artifactId&gt;kylin-jdbc&lt;/artifactId&gt; &lt;version&gt;3.0.0&lt;/version&gt; &lt;scope&gt;provided&lt;/scope&gt;&lt;/dependency&gt; 启动勾选包含 Provided 的依赖 在简易控制台测试代码]]></content>

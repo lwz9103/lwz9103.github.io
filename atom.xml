@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lwz9103.github.io/"/>
-  <updated>2021-03-22T11:33:02.975Z</updated>
+  <updated>2021-03-22T12:40:42.728Z</updated>
   <id>https://lwz9103.github.io/</id>
   
   <author>
@@ -15,6 +15,45 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>mlsql-task-6</title>
+    <link href="https://lwz9103.github.io/2021/03/22/mlsql-task-6/"/>
+    <id>https://lwz9103.github.io/2021/03/22/mlsql-task-6/</id>
+    <published>2021-03-22T12:35:36.000Z</published>
+    <updated>2021-03-22T12:40:42.728Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="任务-6-：-高阶机器学习-从训练到预测"><a href="#任务-6-：-高阶机器学习-从训练到预测" class="headerlink" title="任务(6)： 高阶机器学习-从训练到预测"></a>任务(6)： 高阶机器学习-从训练到预测</h3><ol><li><p>注册模型</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--NaiveBayes</span></span><br><span class="line"><span class="keyword">set</span> jsonStr=<span class="string">'''</span></span><br><span class="line"><span class="string">&#123;"features":[5.1,3.5,1.4,0.2],"label":0.0&#125;,</span></span><br><span class="line"><span class="string">&#123;"features":[5.1,3.5,1.4,0.2],"label":1.0&#125;</span></span><br><span class="line"><span class="string">&#123;"features":[5.1,3.5,1.4,0.2],"label":0.0&#125;</span></span><br><span class="line"><span class="string">&#123;"features":[4.4,2.9,1.4,0.2],"label":0.0&#125;</span></span><br><span class="line"><span class="string">&#123;"features":[5.1,3.5,1.4,0.2],"label":1.0&#125;</span></span><br><span class="line"><span class="string">&#123;"features":[5.1,3.5,1.4,0.2],"label":0.0&#125;</span></span><br><span class="line"><span class="string">&#123;"features":[5.1,3.5,1.4,0.2],"label":0.0&#125;</span></span><br><span class="line"><span class="string">&#123;"features":[4.7,3.2,1.3,0.2],"label":1.0&#125;</span></span><br><span class="line"><span class="string">&#123;"features":[5.1,3.5,1.4,0.2],"label":0.0&#125;</span></span><br><span class="line"><span class="string">&#123;"features":[5.1,3.5,1.4,0.2],"label":0.0&#125;</span></span><br><span class="line"><span class="string">'''</span>;</span><br><span class="line"><span class="keyword">load</span> jsonStr.<span class="string">`jsonStr`</span> <span class="keyword">as</span> <span class="keyword">data</span>;</span><br><span class="line"><span class="keyword">select</span> vec_dense(features) <span class="keyword">as</span> features ,label <span class="keyword">as</span> label <span class="keyword">from</span> <span class="keyword">data</span></span><br><span class="line"><span class="keyword">as</span> data1;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- use RandomForest</span></span><br><span class="line">train data1 as RandomForest.`/tmp/model` where</span><br><span class="line"></span><br><span class="line"><span class="comment">-- once set true,every time you run this script, MLSQL will generate new directory for you model</span></span><br><span class="line">keepVersion="true" </span><br><span class="line"></span><br><span class="line"><span class="comment">-- specicy the test dataset which will be used to feed evaluator to generate some metrics e.g. F1, Accurate</span></span><br><span class="line">and evaluateTable="data1"</span><br><span class="line"></span><br><span class="line"><span class="comment">-- specify group 0 parameters</span></span><br><span class="line">and `fitParam.0.labelCol`="features"</span><br><span class="line">and `fitParam.0.featuresCol`="label"</span><br><span class="line">and `fitParam.0.maxDepth`="2"</span><br><span class="line"></span><br><span class="line"><span class="comment">-- specify group 1 parameters</span></span><br><span class="line">and `fitParam.1.featuresCol`="features"</span><br><span class="line">and `fitParam.1.labelCol`="label"</span><br><span class="line">and `fitParam.1.maxDepth`="10"</span><br><span class="line">;</span><br><span class="line"></span><br><span class="line">register RandomForest.`/tmp/model` as rf_predict;</span><br></pre></td></tr></table></figure><p><img src="//lwz9103.github.io/2021/03/22/mlsql-task-6/image-20210322203858822.png" alt="image-20210322203858822"></p></li><li><p>批量预测</p><p><img src="//lwz9103.github.io/2021/03/22/mlsql-task-6/image-20210322204000717.png" alt="image-20210322204000717"></p></li><li><p>API 预测</p><p><img src="//lwz9103.github.io/2021/03/22/mlsql-task-6/image-20210322204027778.png" alt="image-20210322204027778"></p></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;任务-6-：-高阶机器学习-从训练到预测&quot;&gt;&lt;a href=&quot;#任务-6-：-高阶机器学习-从训练到预测&quot; class=&quot;headerlink&quot; title=&quot;任务(6)： 高阶机器学习-从训练到预测&quot;&gt;&lt;/a&gt;任务(6)： 高阶机器学习-从训练到预测&lt;/h3&gt;&lt;
+      
+    
+    </summary>
+    
+      <category term="MLSQL" scheme="https://lwz9103.github.io/categories/MLSQL/"/>
+    
+      <category term="MLSQL 入门学习任务" scheme="https://lwz9103.github.io/categories/MLSQL/MLSQL-%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E4%BB%BB%E5%8A%A1/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>mlsql-sql-6</title>
+    <link href="https://lwz9103.github.io/2021/03/22/mlsql-sql-6/"/>
+    <id>https://lwz9103.github.io/2021/03/22/mlsql-sql-6/</id>
+    <published>2021-03-22T12:34:55.000Z</published>
+    <updated>2021-03-22T12:35:41.789Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>mlsql-task-5</title>
