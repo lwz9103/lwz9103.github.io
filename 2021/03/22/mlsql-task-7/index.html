@@ -89,7 +89,7 @@
 <meta property="og:description" content="任务(7)： 从Python库提取示例数据到Delta Lake中 安装 vega_datasets 1pip install vega_datasets  编写 mlsql, 从 python 库里面获取数据 12345678910111213141516!python conf &quot;schema=st(field(petalLength,double),field(petalWidth,doub">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://lwz9103.github.io/2021/03/22/mlsql-task-7/image-20210322215105143.png">
-<meta property="og:updated_time" content="2021-03-22T14:33:24.362Z">
+<meta property="og:updated_time" content="2021-03-24T06:31:54.576Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mlsql-task-7">
 <meta name="twitter:description" content="任务(7)： 从Python库提取示例数据到Delta Lake中 安装 vega_datasets 1pip install vega_datasets  编写 mlsql, 从 python 库里面获取数据 12345678910111213141516!python conf &quot;schema=st(field(petalLength,double),field(petalWidth,doub">
@@ -411,8 +411,7 @@
 <li><p>PYTHON_ENV 根据自己需求设置</p>
 <p>由于没有安装 conda，所以直接用本机的 python 环境</p>
 </li>
-<li><p>context.set_output 为什么接受的格式比较特殊？ 大家可以学习下pyarrow.</p>
-<p>这块没太搞懂。。</p>
+<li><p>context.set_output 为什么接受的格式比较特殊？ 大家可以学习下pyarrow.<br>因为 Python 和 Java 之间的数据交换是用 Arrow 做的。Arrow 能省略进程间数据传输序列化反序列的过程，而且能利用 DirectBuffer 实现数据零拷贝。同时，Arrow 的数据存储格式是列式的，所以在数据传输的过程中也是按照一列一列的数据进行传输的。</p>
 </li>
 </ol>
 

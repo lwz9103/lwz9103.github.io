@@ -413,8 +413,7 @@
 <li><p>PYTHON_ENV 根据自己需求设置</p>
 <p>由于没有安装 conda，所以直接用本机的 python 环境</p>
 </li>
-<li><p>context.set_output 为什么接受的格式比较特殊？ 大家可以学习下pyarrow.</p>
-<p>这块没太搞懂。。</p>
+<li><p>context.set_output 为什么接受的格式比较特殊？ 大家可以学习下pyarrow.<br>因为 Python 和 Java 之间的数据交换是用 Arrow 做的。Arrow 能省略进程间数据传输序列化反序列的过程，而且能利用 DirectBuffer 实现数据零拷贝。同时，Arrow 的数据存储格式是列式的，所以在数据传输的过程中也是按照一列一列的数据进行传输的。</p>
 </li>
 </ol>
 
