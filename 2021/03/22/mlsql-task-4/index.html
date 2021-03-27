@@ -473,12 +473,7 @@
           
 
   
-    <div class="comments" id="comments">
-      
-        <div id="gitment-container"></div>
-      
-    </div>
-
+      <div id="gitalk-container"></div>
   
 
         </div>
@@ -773,52 +768,47 @@
 
 
 
-<!-- LOCAL: You can save these files to your site and update links -->
-    
-        
-        <link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
-        <script src="https://billts.site/js/gitment.js"></script>
-    
-<!-- END LOCAL -->
-
-    
-      <style>
-        a.gitment-editor-footer-tip { display: none; }
-        .gitment-container.gitment-footer-container { display: none; }
-      </style>
-    
-
-    
-      <script type="text/javascript">
-      function renderGitment(){
-        var gitment = new Gitment({
-            id: window.location.pathname, 
-            owner: 'lwz9103',
-            repo: 'lwz9103.github.io',
-            
-            oauth: {
-            
-            
-                client_secret: '62dcfcb4a9b43e81039e5dad49cba13ec7c6befd',
-            
-                client_id: '34a32a52a92eb4d0a06e'
-            }});
-        gitment.render('gitment-container');
-      }
-
-      
-      renderGitment();
-      
-      </script>
-    
-
-
 
 
 
 
 
   <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <style>
+        .gt-ico-text, .gt-btn-text {
+            color: #000000;
+        }
+        .gt-container .gt-btn-login {
+            background-color: #10D07A;
+            border: 1px solid #10D07A;
+        }
+        .gt-container .gt-btn-public {
+            background-color: #10D07A;
+            border: 1px solid #10D07A;
+        }
+        .gt-container .gt-btn-public:hover {
+            background-color: #25cdd0;
+            border: 1px solid #10D07A;
+        }
+        .gt-container .gt-btn {
+            border: 1px solid #10D07A;
+        }
+        .gt-container a {
+            color: #10D07A;
+        }
+        .gt-container .gt-btn-preview:hover {
+            border: 1px solid #10D07A;
+        }
+        .gt-container .gt-svg svg {
+            fill: #10D07A;
+        }
+        .gt-container .gt-comment-username {
+            color: #10D07A;
+        }
+        gt-container .gt-popup .gt-action.is--active:before {
+            background: #10D07A;
+        }
+  </style>
   <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
   <div id="gitalk-container"></div>
   <script type="text/javascript">
