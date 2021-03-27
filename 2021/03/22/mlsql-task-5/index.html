@@ -482,8 +482,6 @@
 
   
 
-
-
         </div>
         
           
@@ -818,6 +816,24 @@
 
 
 
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: 'f47bcfb9f4abd751eb99',
+      clientSecret: '4a4fffab27fae324ff138e6bc4502254ec897131',
+      repo: 'blog-comment',
+      owner: 'lwz-open',
+      admin: ['lwz-open'],
+      id: location.pathname,
+      distractionFreeMode: 'false'
+    })
+    gitalk.render('gitalk-container')
+  </script>
 
 
 
