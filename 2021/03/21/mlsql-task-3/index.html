@@ -93,7 +93,7 @@
 <meta property="og:image" content="https://lwz9103.github.io/2021/03/21/mlsql-task-3/image-20210321215259601.png">
 <meta property="og:image" content="https://lwz9103.github.io/2021/03/21/mlsql-task-3/image-20210321215321048.png">
 <meta property="og:image" content="https://lwz9103.github.io/2021/03/21/mlsql-task-3/image-20210321215329927.png">
-<meta property="og:updated_time" content="2021-04-13T13:29:43.066Z">
+<meta property="og:updated_time" content="2021-04-13T13:55:55.974Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mlsql-task-3">
 <meta name="twitter:description" content="设置 MLSQL  环境依赖 检查本机 Python 版本 1python    安装 miniconda 12wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.shsh Miniconda3-latest-Linux-x86_64.sh  设置 conda 环境变量 12export CONDA_HOM">
@@ -415,10 +415,15 @@
 <p><img src="//lwz9103.github.io/2021/03/21/mlsql-task-3/image-20210321215259601.png" alt="image-20210321215259601"></p>
 </li>
 <li><p>验证代码执行</p>
-<p><img src="//lwz9103.github.io/2021/03/21/mlsql-task-3/image-20210321215321048.png" alt="image-20210321215321048"></p>
-<p><img src="//lwz9103.github.io/2021/03/21/mlsql-task-3/image-20210321215329927.png" alt="image-20210321215329927"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">!python env &quot;PYTHON_ENV=source activate dev&quot;;</span><br><span class="line">!python conf &quot;schema=st(field(petalLength,double),field(petalWidth,double),field(sepalLength,double),field(sepalWidth,double),field(species,string))&quot;;</span><br><span class="line">!python conf &quot;dataMode=model&quot;;</span><br><span class="line"></span><br><span class="line">!ray on command &apos;&apos;&apos;</span><br><span class="line"></span><br><span class="line">import plotly.express as px</span><br><span class="line">from plotly.io import to_html</span><br><span class="line">from vega_datasets import data</span><br><span class="line"></span><br><span class="line">df = data.iris()</span><br><span class="line"></span><br><span class="line">context.set_output([[df[name] for name in df]])</span><br><span class="line"></span><br><span class="line">&apos;&apos;&apos; named mlsql_temp_table2;</span><br><span class="line"></span><br><span class="line">select * from mlsql_temp_table2 as output;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果出现 activate no such file or directory, 可以用 activate 的绝对路径。出现这种情况可能是启动 mlsql 的时候环境变量 PATH 里面还没有 conda 的执行路径</p>
+</blockquote>
 </li>
 </ol>
+<p>   <img src="//lwz9103.github.io/2021/03/21/mlsql-task-3/image-20210321215321048.png" alt="image-20210321215321048"></p>
+<p>   <img src="//lwz9103.github.io/2021/03/21/mlsql-task-3/image-20210321215329927.png" alt="image-20210321215329927"></p>
 
       
     </div>
